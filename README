@@ -1,0 +1,25 @@
+Name: Mellanie Martin
+Email: mellanie.martin@wsu.edu
+
+Files:
+main.py - Main interface, handles command line arguments and calls respective functions
+publicKey.py - Main code. Handles the bulk of decrypting/encrypting/key generation
+mathLib.c - C Library I authored that performs Miller Rabin and Fast Modular Exponentiation alogorithms. Done in C to take advantage of C's efficiency with large ints
+Makefile - Just a regular Makefile. Compiles the C library upon 'make'
+
+Notes:
+1. File names for the private and public keys were not a command line argument requirement in assigment handout. Assume private key is in prikey.txt,
+and public key is in pubkey.txt
+2. Make sure the following python libraries are installed; random, ctypes, and sys. These should be installed by default on any machine
+with python 3+ installed
+3. Public key and private key are printed out when key generation is ran. Upon decryption, the decrypted text is printed
+
+Compile Instructions:
+1. Type 'make' to compile C library
+
+Run Instructions (WILL ONLY WORK AFTER COMPILE INSTRUCTIONS):
+1. Run any of the following commands
+  1a. python ./main.py - genkey
+  1b. python ./main.py -e -k pubkey.txt -in plaintext.txt -out ciphertext.txt
+  1c. python ./main.py -d -k priket.txt -in ciphertext.txt -out plaintext.txt
+  *NOTE: pubkey.txt and prikey.txt are set filenames, but plaintext.txt and ciphertext.txt can be replaced with any file name

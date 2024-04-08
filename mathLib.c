@@ -14,8 +14,8 @@ int millerRabin(unsigned long long a, unsigned long long n, unsigned long long u
 unsigned long long modExpo(unsigned long long b, unsigned long long e, unsigned long long n, char *binary);
 
 /*
-Input: witness, input number, and number of witnesses
-Output: prints if n is composite or likely prime
+Input: witness, modulus, u = ((n-1)/2**t), t, and binary representation of u as a string
+Output: returns 0 if composite, 1 if prime
 */
 int millerRabin(unsigned long long a, unsigned long long n, unsigned long long u, int t, char *binary) {
     unsigned long long x0, x1;
@@ -41,7 +41,7 @@ unsigned long long modExpo(unsigned long long b, unsigned long long e, unsigned 
     for (i = 0; binary[i] != '2'; i++);
 
     for (int k = 0; k <= i - 1; k++) {
-            if (binary[k] == '\0') continue;
+            if (binary[k] == '\0') continue; // When strings were transferred from python to C, \0 were placed between every char. This fixes this
             c = 2*c;
             d = (d*d)%n;
             if (binary[k] == '1') {
